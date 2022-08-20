@@ -65,14 +65,43 @@ resource "azurerm_resource_group" "rgcloudcv" {
 }
 ```
 
+## Login to Azure CLI
+
+``` az login ```
+
+# List locations
+
+``` az account list-locations -o table ```
+
 ## Terraform commands
 
 # Setup
 Use the following command to initialize your working directory with Terraform to download and set up the provider(s).
-```terraform init```
+
+``` terraform init ```
 
 # Validate
-```terraform validate```
+Check that your configuration is valid
+
+``` terraform validate ```
 
 # Plan
-```terraform plan```
+Show changes required by the current configuration
+
+``` terraform plan ```
+
+# Apply / Destroy
+Create or update infrastructure 
+
+``` terraform apply ```
+
+Destroy previously created infrastructure
+
+``` terraform destroy ```
+
+# Building the content
+
+```
+Compress-Archive -Path cv-source -DestinationPath cloud-cv.zip
+
+```

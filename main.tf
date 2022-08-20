@@ -65,6 +65,10 @@ resource "azurerm_storage_account" "sacloudcv" {
   location                 = azurerm_resource_group.rgcloudcv.location
   account_tier             = "Standard"
   account_replication_type = "LRS"
+
+  static_website {
+    index_document = "cv.html"
+  }
 }
 
 resource "azurerm_storage_container" "sccloudcv" {
@@ -79,4 +83,22 @@ resource "azurerm_storage_blob" "sbcloudcv" {
   storage_container_name = azurerm_storage_container.sccloudcv.name
   type                   = "Block"
   source                 = "cloud-cv.zip"
+}
+
+resource "azurerm_storage_blob" "sbcloudcvhtml" {
+  name                   = "cv.html"
+  storage_account_name   = azurerm_storage_account.sacloudcv.name
+  storage_container_name = "$web"
+  type                   = "Block"
+  source                 = ".\\cv-source\\cv.html"
+  content_type           = "text/html"
+}
+
+resource "azurerm_storage_blob" "sbcloudcvcss" {
+  name                   = "styles.css"
+  storage_account_name   = azurerm_storage_account.sacloudcv.name
+  storage_container_name = "$web"
+  type                   = "Block"
+  source                 = ".\\cv-source\\styles.css"
+  content_type           = "text/css"
 }

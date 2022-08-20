@@ -1,0 +1,92 @@
+* {
+    max-width: 700px;
+    margin: auto;
+  }
+  
+  
+  /*body {
+      min-width: 500px;
+  }*/
+  
+  div {
+    border-radius: 5px;
+  }
+  
+  #header {
+    height: 40px;
+    width: 100%;
+    background-color: #0b0ff3;
+    position: fixed;
+    z-index: 1;
+  }
+  
+  #title {
+    margin-left: 3%;
+  }
+  
+  #footer {
+    height: 50px;
+    width: 100%;
+    background-color: #0b0ff3;
+    clear: both;
+    position: relative;
+  }
+  
+  .left {
+    height: 750px;
+    width: 45px;
+    background-color: #56508d;
+    float: left;
+    position: fixed;
+  }
+  
+  .right {
+    height: 750px;
+    width: 45px;
+    background-color: #56508d;
+    float: right;
+    position: inherit;
+  }
+  
+  .cv {
+    display: inline-block;
+    margin-top: 6px;
+    margin-left: 55px;
+    width: 75%;
+    height: 750px;
+  }
+  
+  p,
+  li {
+    font-family: 'Cormorant Garamond';
+  }
+  
+  .head {
+    font-size: 20px;
+    padding: 10px;
+    font-weight: bold;
+  }
+  
+  #name {
+    font-family: Sacramento;
+    float: right;
+    color: white;
+    margin-top: 10px;
+    margin-right: 4%;
+  }
+  
+  a {
+    color: blue;
+    text-decoration: none;
+  }
+  
+  @media only screen and (max-width: 430px) {
+    .left,
+    .right {
+      display: none;
+    }
+    .stuff {
+      width: 100%;
+      margin-left: 10px;
+    }
+  }
