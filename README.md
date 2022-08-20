@@ -99,9 +99,10 @@ Destroy previously created infrastructure
 
 ``` terraform destroy ```
 
-# Building the content
+## Building the content
 
-```
-Compress-Archive -Path cv-source -DestinationPath cloud-cv.zip
+``` Compress-Archive -Path cv-source -DestinationPath cloud-cv.zip ```
 
-```
+## Browsing the content (No dns yet)
+
+https://sacloudcv.z35.web.core.windows.net/
