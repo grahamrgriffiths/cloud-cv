@@ -5,26 +5,48 @@ Also following https://cloudresumechallenge.dev/docs/the-challenge/azure/
 
 For this challenge, my CV will be deployed online as an Azure Storage static website.
 
+## Install Azure CLI (if needed)
+https://docs.microsoft.com/en-us/cli/azure/install-azure-cli-windows?tabs=azure-cli
+
 ## Install Terraform on Windows
 ```
+# setup
 $installPath = "C:\Program Files"
 $version = "1.2.7"
-$filename = "terraform_$version_windows_amd64.zip"
+$folderName = "terraform_$($version)_windows_amd64"
+$fileName = "$folderName.zip"
+$terraformPath = Join-Path $installPath $folderName
 
-mkdir $installPath
-cd $installPath
+# download
+mkdir $terraformPath
+cd $terraformPath
 
-$downloadPath = https://releases.hashicorp.com/terraform/$version/terraform_$version_windows_amd64.zip
+$downloadPath = "https://releases.hashicorp.com/terraform/$($version)/terraform_$($version)_windows_amd64.zip"
 
-iwr -Uri $downloadPath -outfile $filename
+iwr -Uri $downloadPath -outfile $fileName
 
-Expand-Archive -Path .\$filename -DestinationPath .\
-rm .\$filename -Force
+# extract
+Expand-Archive -Path .\$fileName -DestinationPath .\
+rm .\$fileName -Force
 
-setx PATH "$env:path;$installPath" -m
+# from here, you should use the UI to modify the path environment variable to add the following folder
+$terraformPath
 
-$env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path","User")
+#
+# Example of using setx, but doing this is dangerous. 
+# It truncates to 1024 chracters, so if your path is longer - you could lose some folders!
+# $env:Path
 
+# add path to terraform
+# $newEnvPath = "$env:Path;$terraformPath"
+
+# $newEnvPath
+
+# set new path
+# setx /M PATH "%PATH%;$terraformPath"
+#
+
+# verify install, need to restart cmd window for this to work
 terraform version
 ```
 ## Install VS Code Extension
