@@ -102,3 +102,16 @@ resource "azurerm_storage_blob" "sbcloudcvcss" {
   source                 = ".\\cv-source\\styles.css"
   content_type           = "text/css"
 }
+
+resource "azurerm_dns_zone" "dnszonecloudcv" {
+  name                = "grahamgriffiths.me"
+  resource_group_name = azurerm_resource_group.rgcloudcv.name
+}
+
+resource "azurerm_dns_cname_record" "dnscnamecloudcv" {
+  name                = "cv"
+  zone_name           = azurerm_dns_zone.dnszonecloudcv.name
+  resource_group_name = azurerm_resource_group.rgcloudcv.name
+  ttl                 = 300
+  record              = "sacloudcv.z35.web.core.windows.net"
+}
